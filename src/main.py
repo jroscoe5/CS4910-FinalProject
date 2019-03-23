@@ -3,6 +3,19 @@
 import numpy as np
 import pandas as pd
 import sklearn.linear_model as linmod
+import sklearn.neural_network as nn
+
+def error(exact, pred):
+    N = len(exact)
+    sum = 0.0
+    misclass = 0
+
+    for i in range(N):
+        if(exact[i] != pred[i]):
+            sum += 1.0
+            misclass += 1
+
+    print(sum / N)
 
 trainData = pd.read_csv("dota2Train.csv", header=None)
 testData = pd. read_csv("dota2Test.csv", header=None)
@@ -16,23 +29,62 @@ testData.drop(testData[testData[3] == 1 ].index , inplace=True)
 testData.drop(testData[testData[3] == 3 ].index , inplace=True)
 testData.drop(testData[testData[3] == 4 ].index , inplace=True)
 
-train_Y = trainData.iloc[:, 0]
-train_X = trainData.iloc[::, 1:114]
+train_Y = np.array(trainData.iloc[:, 0])
+train_X = np.array(trainData.iloc[::, 1::])
 
-test_Y = testData.iloc[:, 0]
-test_X = testData.iloc[::, 1:114]
+test_Y = np.array(testData.iloc[:, 0])
+test_X = np.array(testData.iloc[::, 1::])
 
-logreg = linmod.LogisticRegression(C=1e5, solver='lbfgs')
-
+logreg = linmod.LogisticRegression()
 logreg.fit(test_X, test_Y)
 
-pred_Y = logreg.predict(test_X)
+pred = logreg.predict(test_X)
+error(pred, test_Y)
 
-N = len(pred_Y)
-sum = 0.0
+mlp = NN.MLPClassifier(hidden_layer_sizes=(228,))
+mlp.fit(train_X, train_Y)
 
-for i in range(N):
-    if(pred_Y[i] != test_Y[i]):
-        sum += 1
-        
-print(sum / N)
+pred = mlp.predict(test_X)
+error(pred, test_Y)
+
+mlp = NN.MLPClassifier(hidden_layer_sizes=(228, 228))
+mlp.fit(train_X, train_Y)
+
+pred = mlp.predict(test_X)
+error(pred, test_Y)
+
+mlp = NN.MLPClassifier(hidden_layer_sizes=(114,))
+mlp.fit(train_X, train_Y)
+
+pred = mlp.predict(test_X)
+error(pred, test_Y)
+
+mlp = NN.MLPClassifier(hidden_layer_sizes=(114,114))
+mlp.fit(train_X, train_Y)
+
+pred = mlp.predict(test_X)
+error(pred, test_Y)
+
+mlp = NN.MLPClassifier(hidden_layer_sizes=(57,))
+mlp.fit(train_X, train_Y)
+
+pred = mlp.predict(test_X)
+error(pred, test_Y)
+
+mlp = NN.MLPClassifier(hidden_layer_sizes=(57,57))
+mlp.fit(train_X, train_Y)
+
+pred = mlp.predict(test_X)
+error(pred, test_Y)
+
+mlp = NN.MLPClassifier(hidden_layer_sizes=(29,))
+mlp.fit(train_X, train_Y)
+
+pred = mlp.predict(test_X)
+error(pred, test_Y)
+
+mlp = NN.MLPClassifier(hidden_layer_sizes=(29,29))
+mlp.fit(train_X, train_Y)
+
+pred = mlp.predict(test_X)
+error(pred, test_Y)
