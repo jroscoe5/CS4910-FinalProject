@@ -85,7 +85,6 @@ def testLRModel(sol, trainFeatures, trainTags, testFeatures, testTags):
 #print(testMLPModel((40), 'identity', 'lbfgs', trainF, trainTags, testF, testTags))
 #print(testMLPModel((100), 'identity', 'lbfgs', trainF, trainTags, testF, testTags))
 #print(testMLPModel((20 , 20), 'identity', 'lbfgs', trainF, trainTags, testF, testTags))
-
 #print(testMLPModel((20), 'identity', 'lbfgs', trainF, trainTags, testF, testTags))
 #print(testMLPModel((20), 'logistic', 'lbfgs', trainF, trainTags, testF, testTags))
 #print(testMLPModel((20), 'tanh', 'lbfgs', trainF, trainTags, testF, testTags))
@@ -120,3 +119,16 @@ def testLRModel(sol, trainFeatures, trainTags, testFeatures, testTags):
 #print(testLRModel('liblinear', trainF, trainTags, testF, testTags))
 #print(testLRModel('sag', trainF, trainTags, testF, testTags))
 #print(testLRModel('saga', trainF, trainTags, testF, testTags))
+
+#One hidden layer 228 relu
+#print(testMLPModel((228), 'relu', 'lbfgs', trainF, trainTags, testF, testTags))
+#Two hidden layer both 228 relu
+#print(testMLPModel((228 ,228), 'relu', 'lbfgs', trainF, trainTags, testF, testTags))
+#One hidden layer 114 relu
+#print(testMLPModel((114), 'relu', 'lbfgs', trainF, trainTags, testF, testTags))
+#Two hidden layer both 114 relu
+#print(testMLPModel((114 ,114), 'relu', 'lbfgs', trainF, trainTags, testF, testTags))
+#One hidden layer 57 relu
+#print(testMLPModel((57), 'relu', 'lbfgs', trainF, trainTags, testF, testTags))
+#Two hidden layer both 57 relu
+#print(testMLPModel((57 ,57), 'relu', 'lbfgs', trainF, trainTags, testF, testTags))
