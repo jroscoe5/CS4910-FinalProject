@@ -16,6 +16,7 @@ def error(exact, pred):
             misclass += 1
 
     print(sum / N)
+    print(misclass)
 
 trainData = pd.read_csv("dota2Train.csv", header=None)
 testData = pd. read_csv("dota2Test.csv", header=None)
