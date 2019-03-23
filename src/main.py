@@ -7,6 +7,15 @@ import sklearn.linear_model as linmod
 trainData = pd.read_csv("dota2Train.csv", header=None)
 testData = pd. read_csv("dota2Test.csv", header=None)
 
+# Remove practice, tutorial, and co-op with AI games
+trainData.drop(trainData[trainData[3] == 1 ].index , inplace=True)
+trainData.drop(trainData[trainData[3] == 3 ].index , inplace=True)
+trainData.drop(trainData[trainData[3] == 4 ].index , inplace=True)
+
+testData.drop(testData[testData[3] == 1 ].index , inplace=True)
+testData.drop(testData[testData[3] == 3 ].index , inplace=True)
+testData.drop(testData[testData[3] == 4 ].index , inplace=True)
+
 train_Y = trainData.iloc[:, 0]
 train_X = trainData.iloc[::, 1:114]
 
