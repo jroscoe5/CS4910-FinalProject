@@ -3,7 +3,7 @@
 import numpy as np
 import pandas as pd
 import sklearn.linear_model as linmod
-import sklearn.neural_network as nn
+import sklearn.neural_network as NN
 
 def error(exact, pred):
     N = len(exact)
