@@ -31,10 +31,10 @@ testData.drop(testData[testData[3] == 3 ].index , inplace=True)
 testData.drop(testData[testData[3] == 4 ].index , inplace=True)
 
 train_Y = np.array(trainData.iloc[:, 0])
-train_X = np.array(trainData.iloc[::, 1::])
+train_X = np.array(trainData.iloc[::, 4::])
 
 test_Y = np.array(testData.iloc[:, 0])
-test_X = np.array(testData.iloc[::, 1::])
+test_X = np.array(testData.iloc[::, 4::])
 
 logreg = linmod.LogisticRegression()
 logreg.fit(test_X, test_Y)
